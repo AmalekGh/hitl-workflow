@@ -41,6 +41,8 @@ class SemanticScholar:
         return invalid_char_re.sub('_', filename)
 
     def download_pdfs(self, query, limit=50):
+                
+        print("Querying Semantic Scholar...")
         papers_with_pdf = self.semanticscholar(query, limit)
         os.makedirs('pdfs_corpus', exist_ok=True)
 
@@ -65,7 +67,7 @@ class SemanticScholar:
 
                     with open(pdf_path, 'wb') as f:
                         f.write(pdf_response.content)
-
-                    print(f"Downloaded PDF for paper titled: {title}")
                 else:
                     print(f"Failed to download PDF for paper titled: {title}")
+
+        print("Semantic Scholar was successfully queried...")

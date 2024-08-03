@@ -93,7 +93,7 @@ class Arxiv(object):
         return invalid_char_re.sub('_', filename)
 
     def download_pdf(self, query, limit=100):
-
+        print("Querying Arxiv...")
         arxiv_results = self.arxiv(query, limit)
 
         download_dir = "pdfs_corpus"
@@ -101,6 +101,7 @@ class Arxiv(object):
 
         pdf_links = arxiv_results["pdf_link"]
         titles = arxiv_results["title"]  
+
 
         for url, save_name in zip(pdf_links, titles):
 
@@ -126,3 +127,4 @@ class Arxiv(object):
                 
             except Exception as e:
                 print(f"Failed to download {url}: {e}")
+        print("Arxiv queried.")

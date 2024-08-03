@@ -5,3 +5,5 @@ requests==2.28.1
 wget>=3.2
 pdfplumber
 semanticscholar
+python-dotenv
+pdf2doi
