@@ -29,4 +29,4 @@ class ZoteroUtil:
 
             
         except Exception:
-            print(f"PDF not found. Failed to download.")
+            print(f"Paper has no accessible PDF.")
