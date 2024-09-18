@@ -6,4 +6,12 @@ wget>=3.2
 pdfplumber
 semanticscholar
 python-dotenv
-pdf2doi
+pdfminer==20191125
+ipywidgets==8.1.5
+langchain==0.2.16
+langchain-text-splitters==0.2.4
+nltk==3.9.1
+numpy==1.26.4
+pyzotero==1.5.20
+scikit-learn==1.5.1
+spacy==3.7.6
