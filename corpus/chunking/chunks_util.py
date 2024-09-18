@@ -1,4 +1,5 @@
 import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
 import spacy
 
 
@@ -56,3 +57,47 @@ class ChunksUtil:
                 final_chunks.append(cluster_txt)
 
         return final_chunks
+    
+    def calculate_cosine_distances(sentences):
+        distances = []
+        for i in range(len(sentences) - 1):
+            embedding_current = sentences[i]['combined_sentence_embedding']
+            embedding_next = sentences[i+1]['combined_sentence_embedding']
+
+            similarity = cosine_similarity([embedding_current], [embedding_next])[0][0]
+
+            distance = 1 - similarity
+            distances.append(distance)
+
+            sentences[i]['distance to next'] = distance
+
+        return distances, sentences
+    
+    def get_split_indices(distances):
+
+        breakpoint_percentile_threshold = 65
+        breakpoint_distance_threshold = np.percentile(distances, breakpoint_percentile_threshold)
+
+        indices_above_thresh = [i for i, x in enumerate(distances) if x > breakpoint_distance_threshold]
+
+        return indices_above_thresh
+
+    def split_using_distances(split_distances, sentences_list):
+        start_index = 0 
+
+        chunks_final = []
+
+        for index in split_distances:
+            end_index = index - 1 
+
+            group = sentences_list[start_index:end_index+1]
+            combined_text = ' '.join([d['sentence'] for d in group])
+            chunks_final.append(combined_text)
+
+            start_index = index
+
+        if start_index < len(sentences_list):
+            combined_text = ' '.join([d['sentence'] for d in sentences_list[start_index:]])
+            chunks_final.append(combined_text)
+
+        return chunks_final

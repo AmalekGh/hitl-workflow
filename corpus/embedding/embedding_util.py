@@ -1,11 +1,20 @@
 import ollama
 from vectordb import Memory
 import faiss
+from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 
 class EmbeddingUtil:
     def __init__(self):
         pass
+
+    def ollama_embed_combined_sentences(self, documents, model="nomic-embed-text"):
+        embeddings = []
+        for d in documents:
+            response = ollama.embeddings(model, prompt=d['combined_Sentence'])
+            embeddings.append(response["embedding"])
+        return embeddings
+
 
     def ollama_embed_document(self, documents, model="nomic-embed-text"):
         embeddings = []
@@ -13,6 +22,7 @@ class EmbeddingUtil:
             response = ollama.embeddings(model, prompt=d)
             embeddings.append(response["embedding"])
         return embeddings
+
 
     def ollama_embed_query(self, query, model="nomic-embed-text"):
         return ollama.embeddings(model, prompt=query)["embedding"]
@@ -54,4 +64,3 @@ class EmbeddingUtil:
 
         return results
     
-

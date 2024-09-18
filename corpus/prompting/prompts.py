@@ -19,6 +19,11 @@ Answer: \
 """
         return prompt
     
+
+    def get_query(data_element: str):
+
+        return f"What is the {data_element} in this work?"
+    
     def get_prompt_2(self, context: str, query:str):
         prompt = f"""INSTRUCTIONS:
 Answer the users QUESTION using the DOCUMENT text above and no prior knowledge.
