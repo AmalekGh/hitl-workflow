@@ -12,5 +12,5 @@ class LlmUtil:
                 'content': prompt,
             },
         ])
-        print(response['message']['content']) 
+        return response['message']['content']
 

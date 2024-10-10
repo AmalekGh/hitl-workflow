@@ -21,7 +21,7 @@ class DocumentUtil:
         documents = []
 
         for file_name in os.listdir(data_path):
-            if file_name.endswith("F95SXDZF.txt"):
+            if file_name.endswith("2403.07541v2.txt"):
                 file_path = os.path.join(data_path, file_name)
 
                 with open(file_path, 'r', encoding='utf-8') as file:
@@ -55,7 +55,7 @@ class DocumentUtil:
         return text
 
     def get_text_without_references(self,path):
-        text = extract_text("2403.07541v2.pdf")
+        text = extract_text(path)
 
         return self.remove_references(self, text)
     
