@@ -16,3 +16,4 @@ numpy==1.26.4
 pyzotero==1.5.20
 scikit-learn==1.5.1
 spacy==3.7.6
+mistralai
