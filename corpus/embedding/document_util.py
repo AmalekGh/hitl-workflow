@@ -5,8 +5,6 @@ from langchain.text_splitter import NLTKTextSplitter
 import warnings
 import re
 import numpy as np
-import spacy
-
 
 class DocumentUtil:
     def __init__(self):

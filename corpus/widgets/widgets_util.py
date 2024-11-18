@@ -3,8 +3,8 @@ from IPython.display import display, clear_output
 
 
 class DynamicCheckboxList:
-    def __init__(self):
-        self.options = ['Title', 'Theme', 'Keywords', 'Evaluation Approach']
+    def __init__(self, init=["Title"]):
+        self.options = init
         
         self.checkbox_container = widgets.VBox()
         self.create_checkboxes()
@@ -58,7 +58,6 @@ class DocumentLimitSlider:
 
     def save_input(self, change):
         self.limit = change['new']
-        print(f"Selected limit: {self.limit}")
 
     def get_current_value(self):
         return self.limit

@@ -30,7 +30,7 @@ class Arxiv(object):
             "Sec-Fetch-Mode": "navigate",
             "Sec-Fetch-User": "?1",
             "Sec-Fetch-Dest": "document",
-            "Referer": "https://arxiv.org/search/?query=Multi-label+text+classification&searchtype=all&abstracts=show&order=&size=100&start=200",
+            "Referer": "https://arxiv.org/search/?query=Multi-label+text+classification&searchtype=all&abstracts=show&order=&size={size}&start=200",
             "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
         }
 
